@@ -136,8 +136,19 @@ const providedCase = {
   }
 };
 
+const resetCase = {
+  '1': {
+    name: 'Jordan',
+    transactions: [],
+    payers: [],
+    payerBalances: {},
+    balance: 0    
+  }
+};
+
 module.exports = {
   edgeCase,
   edgeCaseTwo,
-  providedCase
+  providedCase,
+  resetCase
 }

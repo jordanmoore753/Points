@@ -3,7 +3,8 @@ const router = express.Router();
 const {
   edgeCase,
   edgeCaseTwo,
-  providedCase
+  providedCase,
+  resetCase
 } = require('../data/cases');
 
 router.post('/populate/:id', function(req, res, next) {
@@ -21,14 +22,7 @@ router.post('/populate/:id', function(req, res, next) {
 });
 
 router.post('/reset', function(req, res, next) {
-  req.session.users['1'] = {
-    name: 'Jordan',
-    transactions: [],
-    payers: [],
-    payerBalances: {},
-    balance: 0
-  };
-
+  req.session.users = resetCase;
   return res.send(req.session.users['1']);
 });
 
