@@ -25,12 +25,16 @@ router.get('/:id/balances', function(req, res, next) {
 router.post('/:id/add', function(req, res, next) {
   const { points, payer, transactionDate } = req.body;
 
+  if (typeof points !== 'number') {
+    return res.status(403).send({ error: 'Invalid points. Must be number.' });
+  }
+
   if (dateIsInvalid(transactionDate)) {
-    return res.status(403).send({ error: "Invalid date." });
+    return res.status(403).send({ error: "Invalid date. Must be in format: YYYY-MM-DDTHH:MM" });
   }
 
   if (payerIsInvalid(payer)) {
-    return res.status(403).send({ error: "Invalid payer." });
+    return res.status(403).send({ error: "Invalid payer. Must be string and not just be empty spaces." });
   }
 
   const user = req.session.users[req.params.id];
@@ -41,7 +45,7 @@ router.post('/:id/add', function(req, res, next) {
   }
 
   const newTransaction = {
-    points,
+    points: Math.floor(points),
     payer,
     transactionDate
   };

@@ -6,10 +6,18 @@ const {
   providedCase
 } = require('../data/cases');
 
-router.post('/populate', function(req, res, next) {
-  req.session.users = providedCase;
+router.post('/populate/:id', function(req, res, next) {
+  const id = req.params.id;
 
-  return res.sendStatus(200);
+  if (id === '1') {
+    req.session.users = edgeCase;
+  } else if (id === '2') {
+    req.session.users = edgeCaseTwo;
+  } else {
+    req.session.users = providedCase;
+  }
+
+  return res.send(req.session.users['1']);
 });
 
 router.post('/reset', function(req, res, next) {
