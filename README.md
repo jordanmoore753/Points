@@ -8,14 +8,14 @@ This application is built using Node.js and the Express framework.
 
 1. First, **clone** this repo on to your local machine. Run `git clone https://github.com/jordanmoore753/Points.git` on your command line in the directory where you want the repository to be cloned to.
 2. Now, navigate to the directory with `cd Points`.
-3. If you do not have Node.js installed, install it using the following guide: [https://nodejs.org/en/download/](Node.js Installation Guide).
-4. **npm** should already be installed once Node.js is done installing, but if it wasn't, install it using the following guide: [https://docs.npmjs.com/downloading-and-installing-node-js-and-npm](npm Install Guide).
+3. If you do not have Node.js installed, install it using the following guide: [Node.js Installation](https://nodejs.org/en/download/).
+4. **npm** should already be installed once Node.js is done installing, but if it wasn't, install it using the following guide: [npm Install Guide](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 5. Run `npm install` to install the dependencies required for this project.
 6. Run `npm start` to start the application.
 
 ## API Documentation
 
-The API is accessible at `http://localhost:3000`. I suggest using [https://www.postman.com/downloads/](Postman) or Insomnia for accessing this API, as there is no client to interact with.
+The API is accessible at `http://localhost:3000`. I suggest using [Postman](https://www.postman.com/downloads/) or Insomnia for accessing this API, as there is no client to interact with.
 
 The state of the application is stored in memory. There is exactly one user by the name of 'Jordan' that is usable in the application for this exercise.
 
@@ -179,7 +179,9 @@ This endpoint sets the application's state to pre-filled state. There are 3 dist
 ```
 ### GET `/users/1/balances`
 
-This endpoint returns the user's current positive balances from its payers. For Case 3, the returned JSON will look like:
+This endpoint returns the user's current positive balances from its payers. Of course, for a normal application, the `1` would be supplemented with an `:id` in the documentation, but in this case we only have the one user. 
+
+For Case 3, the returned JSON will look like:
 
 ```json
 {
@@ -194,7 +196,7 @@ This endpoint returns the user's current positive balances from its payers. For 
     }
 }
 ```
-### POST '/users/1/add`
+### POST `/users/1/add`
 
 This endpoint allows you to add points to the user's state. There are three required fields in the JSON body: `points`, `payer`, and `transactionDate`.
 
