@@ -215,7 +215,7 @@ The uploaded JSON should look like so:
 ```
 ### POST `/users/1/deduct`
 
-This endpoint allows you to deduct points from the user. There is only one required field in the JSON: `points`, and this should be an integer.
+This endpoint allows you to deduct points from the user. There is only one required field in the JSON: `amount`, and this should be an integer.
 
 An example request using Case 3:
 
