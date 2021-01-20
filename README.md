@@ -202,7 +202,7 @@ This endpoint allows you to add points to the user's state. There are three requ
 
 1. `points` must be an integer.
 2. `payer` must be a string.
-3. `transactionDate` must be a string of 16 characters following this format: `YYYY-MM-DDTHH:MM` (The `T` stands for **time**).
+3. `transactionDate` must be a string of 16 characters following this format: `YYYY-MM-DDTHH:MM` (The `T` stands for **time**). The time is in the Hour:Minute format and is done on European/Military time.
 
 The uploaded JSON should look like so:
 
