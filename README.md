@@ -34,9 +34,11 @@ The `/reset` endpoint resets the application's state to a blank slate. It will r
     "balance": 0
 }
 ```
+This endpoint is useful for when you want to make several `/users/1/add` calls and build up the state on your own.
+
 ### POST `/populate/:id`
 
-This endpoint sets the application's state to pre-filled state. There are 3 distinct cases one can use if they do not want to call the `/users/:id/add` endpoint several times. It is provided simply for convenience. The three default cases one can use are:
+This endpoint sets the application's state to pre-filled state. There are 3 distinct cases one can use if they do not want to call the `/users/:id/add` endpoint several times. It is provided simply for convenience. Substitute either `1`, `2`, or `3` for `:id` in the request. The three provided cases one can use are:
 
 **Case 1**
 ```json
@@ -179,9 +181,9 @@ This endpoint sets the application's state to pre-filled state. There are 3 dist
 ```
 ### GET `/users/1/balances`
 
-This endpoint returns the user's current positive balances from its payers. Of course, for a normal application, the `1` would be supplemented with an `:id` in the documentation, but in this case we only have the one user. 
+This endpoint returns the user's current positive balances from its payers. Of course, for a normal application, the `1` would be supplemented with an `:id` in the documentation, but in this case we only have the one user so we can just say `1`. 
 
-For Case 3, the returned JSON will look like:
+For Case 3, the response (JSON) will look like:
 
 ```json
 {
@@ -204,7 +206,7 @@ This endpoint allows you to add points to the user's state. There are three requ
 2. `payer` must be a string.
 3. `transactionDate` must be a string of 16 characters following this format: `YYYY-MM-DDTHH:MM` (The `T` stands for **time**). The time is in the Hour:Minute format and is done on European/Military time.
 
-The uploaded JSON should look like so:
+The request's JSON body should look like so:
 
 ```json
 {
@@ -213,6 +215,8 @@ The uploaded JSON should look like so:
     "transactionDate": "2004-11-01T14:00"
 }
 ```
+The response will be the same JSON body as the request, or it will return with an error in JSON format.
+
 ### POST `/users/1/deduct`
 
 This endpoint allows you to deduct points from the user. There is only one required field in the JSON: `amount`, and this should be an integer.
